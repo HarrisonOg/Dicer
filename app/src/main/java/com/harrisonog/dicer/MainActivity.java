@@ -8,6 +8,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.Random;
 
@@ -16,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
     public static final Random RANDOM = new Random();
     private Button rollDices;
     private ImageView imageView1, imageView2;
+    private TextView resultView;
+    private int dOne, dTwo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         rollDices = (Button) findViewById(R.id.rollDiceButton);
         imageView1 = (ImageView) findViewById(R.id.diceView1);
         imageView2 = (ImageView) findViewById(R.id.diceView2);
+        resultView = (TextView) findViewById(R.id.resultTextView);
 
         rollDices.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -42,10 +46,14 @@ public class MainActivity extends AppCompatActivity {
                         int res = getResources().getIdentifier("dice_" + value, "drawable", "com.harrisonog.dicer");
 
                         if(animation == anim1){
+                            dOne = value;
                             imageView1.setImageResource(res);
                         } else if (animation == anim2) {
+                            dTwo = value;
                             imageView2.setImageResource(res);
                         }
+
+                        resultView.setText(new String("Your roll is: " + (dOne + dTwo)));
                     }
 
                     @Override
