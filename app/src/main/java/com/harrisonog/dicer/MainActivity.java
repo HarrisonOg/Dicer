@@ -46,7 +46,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        // default method for handling onClick Events..
 
         switch (v.getId()) {
 
@@ -61,6 +60,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.rollDiceButton:
                 imageView1.startAnimation(anim1);
                 imageView2.startAnimation(anim2);
+                break;
+
+            default:
                 break;
         }
     }
